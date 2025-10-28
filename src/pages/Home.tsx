@@ -17,19 +17,19 @@ const Home = () => {
           <div className="mx-auto max-w-3xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Your Knowledge Hub</span>
+              <span className="text-sm font-medium text-primary">Twoja baza wiedzy</span>
             </div>
             
             <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
-              Welcome to my world of{' '}
+              Witaj w świecie{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 AI & Marketing Automation
               </span>
             </h1>
             
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-              Explore cutting-edge insights, practical guides, and expert perspectives on artificial intelligence and marketing automation. 
-              Stay ahead of the curve with in-depth articles and actionable strategies.
+            Poznaj nowoczesne pomysły, praktyczne wskazówki i inspiracje z zakresu sztucznej inteligencji oraz automatyzacji marketingu. 
+            Pozostań na bieżąco dzięki ciekawym artykułom i skutecznym strategiom, które możesz od razu wykorzystać.
             </p>
             
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
