@@ -41,7 +41,7 @@ const Home = () => {
               </Link>
               <Link to="/about">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  About Me
+                  O mnie
                 </Button>
               </Link>
             </div>
