@@ -76,7 +76,7 @@ const Home = () => {
           <div className="mt-8 text-center sm:hidden">
             <Link to="/blog?category=AI">
               <Button variant="ghost">
-                View All AI Articles
+                Zobacz wszystkie artykuły o AI
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
