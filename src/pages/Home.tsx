@@ -3,10 +3,55 @@ import { articles } from '@/data/articles';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Home = () => {
+  const { language } = useLanguage();
   const aiArticles = articles.filter(a => a.category === 'AI').slice(0, 3);
   const automationArticles = articles.filter(a => a.category === 'Marketing Automation').slice(0, 3);
+
+  const content = {
+    pl: {
+      hero: {
+        badge: 'Twoja baza wiedzy',
+        title: 'Witaj w świecie',
+        subtitle: 'Poznaj nowoczesne pomysły, praktyczne wskazówki i inspiracje z zakresu sztucznej inteligencji oraz automatyzacji marketingu. Pozostań na bieżąco dzięki ciekawym artykułom i skutecznym strategiom, które możesz od razu wykorzystać.',
+        cta: 'Przeglądaj artykuły',
+        about: 'O mnie'
+      },
+      ai: {
+        title: 'Najnowsze w AI',
+        subtitle: 'Odkryj najnowsze trendy i spostrzeżenia w sztucznej inteligencji',
+        viewAll: 'Zobacz wszystkie'
+      },
+      automation: {
+        title: 'Najnowsze w Marketing Automation',
+        subtitle: 'Opanuj sztukę automatyzacji marketingu dzięki eksperckim poradnikom',
+        viewAll: 'Zobacz wszystkie'
+      }
+    },
+    en: {
+      hero: {
+        badge: 'Your Knowledge Base',
+        title: 'Welcome to the world of',
+        subtitle: 'Discover modern ideas, practical tips, and inspiration in artificial intelligence and marketing automation. Stay up to date with interesting articles and effective strategies you can use right away.',
+        cta: 'Explore Articles',
+        about: 'About Me'
+      },
+      ai: {
+        title: 'Latest in AI',
+        subtitle: 'Discover the latest trends and insights in artificial intelligence',
+        viewAll: 'View All'
+      },
+      automation: {
+        title: 'Latest in Marketing Automation',
+        subtitle: 'Master the art of marketing automation with expert guides and strategies',
+        viewAll: 'View All'
+      }
+    }
+  };
+
+  const t = content[language];
 
   return (
     <div className="min-h-screen">
@@ -17,31 +62,30 @@ const Home = () => {
           <div className="mx-auto max-w-3xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2">
               <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Twoja baza wiedzy</span>
+              <span className="text-sm font-medium text-primary">{t.hero.badge}</span>
             </div>
-            
+
             <h1 className="mb-6 text-4xl font-bold leading-tight md:text-6xl">
-              Witaj w świecie{' '}
+              {t.hero.title}{' '}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 AI & Marketing Automation
               </span>
             </h1>
-            
+
             <p className="mb-8 text-lg text-muted-foreground md:text-xl">
-            Poznaj nowoczesne pomysły, praktyczne wskazówki i inspiracje z zakresu sztucznej inteligencji oraz automatyzacji marketingu. 
-            Pozostań na bieżąco dzięki ciekawym artykułom i skutecznym strategiom, które możesz od razu wykorzystać.
+              {t.hero.subtitle}
             </p>
-            
+
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Link to="/blog">
                 <Button size="lg" className="w-full sm:w-auto">
-                  Explore Articles
+                  {t.hero.cta}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link to="/about">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  O mnie
+                  {t.hero.about}
                 </Button>
               </Link>
             </div>
@@ -54,29 +98,29 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="mb-12 flex items-end justify-between">
             <div>
-              <h2 className="mb-2 text-3xl font-bold md:text-4xl">Latest in AI</h2>
+              <h2 className="mb-2 text-3xl font-bold md:text-4xl">{t.ai.title}</h2>
               <p className="text-muted-foreground">
-                Discover the latest trends and insights in artificial intelligence
+                {t.ai.subtitle}
               </p>
             </div>
             <Link to="/blog?category=AI" className="hidden sm:block">
               <Button variant="ghost">
-                View All
+                {t.ai.viewAll}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
-          
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {aiArticles.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
-          
+
           <div className="mt-8 text-center sm:hidden">
             <Link to="/blog?category=AI">
               <Button variant="ghost">
-                Zobacz wszystkie artykuły o AI
+                {t.ai.viewAll}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
@@ -89,29 +133,29 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="mb-12 flex items-end justify-between">
             <div>
-              <h2 className="mb-2 text-3xl font-bold md:text-4xl">Latest in Marketing Automation</h2>
+              <h2 className="mb-2 text-3xl font-bold md:text-4xl">{t.automation.title}</h2>
               <p className="text-muted-foreground">
-                Master the art of marketing automation with expert guides and strategies
+                {t.automation.subtitle}
               </p>
             </div>
             <Link to="/blog?category=Marketing Automation" className="hidden sm:block">
               <Button variant="ghost">
-                View All
+                {t.automation.viewAll}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
-          
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {automationArticles.map((article) => (
               <ArticleCard key={article.id} article={article} />
             ))}
           </div>
-          
+
           <div className="mt-8 text-center sm:hidden">
             <Link to="/blog?category=Marketing Automation">
               <Button variant="ghost">
-                View All Marketing Automation Articles
+                {t.automation.viewAll}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

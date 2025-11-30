@@ -8,6 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from '@/components/ui/sheet';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Navigation = () => {
   const location = useLocation();
@@ -47,9 +48,8 @@ export const Navigation = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.path) ? 'text-primary' : 'text-muted-foreground'
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-muted-foreground'
+                  }`}
               >
                 {link.label}
               </Link>
@@ -58,6 +58,9 @@ export const Navigation = () => {
 
           {/* Search & Mobile Menu */}
           <div className="flex items-center gap-2">
+            <div className="hidden md:block">
+              <LanguageSwitcher />
+            </div>
             {/* Search */}
             {isSearchOpen ? (
               <form onSubmit={handleSearch} className="hidden md:block">
@@ -95,9 +98,8 @@ export const Navigation = () => {
                     <Link
                       key={link.path}
                       to={link.path}
-                      className={`text-lg font-medium transition-colors hover:text-primary ${
-                        isActive(link.path) ? 'text-primary' : 'text-muted-foreground'
-                      }`}
+                      className={`text-lg font-medium transition-colors hover:text-primary ${isActive(link.path) ? 'text-primary' : 'text-muted-foreground'
+                        }`}
                     >
                       {link.label}
                     </Link>
@@ -110,6 +112,9 @@ export const Navigation = () => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                     />
                   </form>
+                </div>
+                <div className="mt-6">
+                  <LanguageSwitcher />
                 </div>
               </SheetContent>
             </Sheet>
